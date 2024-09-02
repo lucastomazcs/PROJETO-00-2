@@ -1,62 +1,135 @@
+from typing import Any
 import pygame
 from pygame.sprite import Sprite
-import random
+import math
 from explosao import Explosao
 
 class InimigoExplosivo(Sprite):
-    def __init__(self, posicao, tamanho, tempo_animacao, mapa, dono=None, configuracoes=None, velocidade=1, dano_explosao=2, intervalo_movimento=2):
+    def __init__(self, posicao, tamanho, velocidade, mapa) -> None:
         super().__init__()
-
-        # Configura as propriedades do inimigo explosivo
-        self.image = pygame.Surface(tamanho)
-        self.image.fill((255, 0, 0))  # Cor vermelha para o inimigo bomba
-        self.rect = self.image.get_rect(topleft=posicao)
+        self.__posicao = posicao
+        self.__velocidade = velocidade
+        self.tamanho = tamanho
         self.mapa = mapa
-        self.velocidade = velocidade
-        self.dano_explosao = dano_explosao
-        self.timer_explosao = pygame.time.get_ticks() / 1000
-        self.tempo_animacao = tempo_animacao
-        self.explodido = False
-        self.intervalo_movimento = intervalo_movimento
-        self.contador_intervalo = 0
+        self.__vida = 1 # O inimigo morre com uma explosão
+        self.__dano_explosao = 9999
+
+        # Variavel para controlar o tempo entre teleportes
+        self.tempo_teleporte = 2.0
+        self.tempo_ultimo_teleporte = 0
+
+        #Carrega imagens do inimigo:
+        self.imagens= {
+            'direita': pygame.image.load('inimigo_explosivo/inimigo_novo_direita1.png').convert_alpha(),
+            'esquerda': pygame.image.load('inimigo_explosivo/inimigo_novo_esquerda1.png').convert_alpha(),
+            'frente': pygame.image.load('inimigo_explosivo/inimigo_novo.png').convert_alpha(),
+            'tras': pygame.image.load('inimigo_explosivo/inimigo_novo_trás1.png').convert_alpha()
+        }
+        self.direcao = 'frente' # Direção Inicial
+        self.image = self.imagens[self.direcao]
+        self.rect = self.image.get_rect(topleft = posicao)
+
+    @property
+    def posicao(self):
+        return self.__posicao
+    @property
+    def velocidade(self):
+        return self.__velocidade
+    @property
+    def vida(self):
+        return self.__vida
+    @property
+    def dano_explosao(self):
+        return self.__dano_explosao
+    
+    def movimentar(self, dt):
+        jogador_mais_proximo = self.encontrar_jogador_proximo()
+        if jogador_mais_proximo:
+            direcao = (jogador_mais_proximo.rect.centerx - self.rect.centerx,
+                       jogador_mais_proximo.rect.centery - self.rect.centery)
+            distancia = math.hypot(*direcao)
+            if distancia != 0:
+                direcao = (direcao[0] / distancia, direcao[1] / distancia)
+                self.rect.x += direcao[0] * self.velocidade * dt
+                self.rect.y += direcao[1] * self.velocidade * dt
+
+                # Atualizar a direção com base no movimento
+                if abs(direcao[0]) > abs(direcao[1]):
+                    if direcao[0] > 0:
+                        self.direcao = 'direita'
+                    else:
+                        self.direcao = 'esquerda'
+                else:
+                    if direcao[1] > 0:
+                        self.direcao = 'frente'
+                    else:
+                        self.direcao = 'tras'
+                
+                # Atualizar a imagem com base na direção
+                self.image = self.imagens[self.direcao]
+                self.rect = self.image.get_rect(center=self.rect.center)
         
-        # Define a direção inicial para o movimento
-        self.direcao = random.choice(['esquerda', 'direita'])
+        # Checa tempo para teleporte
+        current_time = pygame.time.get_ticks() / 1000
+        if current_time - self.tempo_ultimo_teleporte >= self.tempo_teleporte:
+            self.teletransportar_para_espaco_vazio_mais_proximo(jogador_mais_proximo)
+            self.tempo_ultimo_teleporte = current_time
 
-    def update(self, dt):
-        if not self.explodido:
-            # Atualiza o contador de intervalo de movimento
-            self.contador_intervalo += dt
-            
-            if self.contador_intervalo >= self.intervalo_movimento:
-                self.contador_intervalo = 0
-                self.mover()
+    def teletransportar_para_espaco_vazio_mais_proximo(self, jogador):
+        # Direção do teleporte em direção ao jogador
+        direcao = pygame.math.Vector2(jogador.rect.center) - pygame.math.Vector2(self.rect.center)
+        direcao = direcao.normalize()  # Normaliza o vetor para obter direção
 
-            # Verifica a colisão com o jogador
-            jogador_colidido = pygame.sprite.spritecollideany(self, self.mapa.jogadores)
-            if jogador_colidido:
-                self.explodir(jogador_colidido)
+        # Distância máxima de teleporte
+        distancia_max = 100  # Pode ajustar conforme necessário
+        for distancia in range(int(distancia_max), 0, -10):  # Passos de 10 pixels
+            nova_posicao = pygame.math.Vector2(self.rect.center) + direcao * distancia
+            nova_posicao = (int(nova_posicao.x), int(nova_posicao.y))
 
-    def mover(self):
-        if self.direcao == 'esquerda':
-            self.rect.x -= self.velocidade
-            if self.rect.left < 0:
-                self.direcao = 'direita'
-        elif self.direcao == 'direita':
-            self.rect.x += self.velocidade
-            if self.rect.right > self.mapa.largura:
-                self.direcao = 'esquerda'
+            # Verifica se a nova posição é livre de blocos e inimigos
+            if not any(bloco.rect.collidepoint(nova_posicao) for bloco in self.mapa.blocos) and \
+               not any(inimigo.rect.collidepoint(nova_posicao) for inimigo in self.mapa.inimigos):
+                self.rect.center = nova_posicao
+               # Atualiza o rect para garantir que está posicionado corretamente
+                self.rect = self.image.get_rect(center=self.rect.center)
+                print(f"Teletransportado para: {self.rect.center}")  # Debug
+                break
+    
+    def encontrar_jogador_proximo(self):
+        jogador_mais_proximo = None
+        menor_distancia = float('inf')
+        for jogador in self.mapa.jogadores:
+            distancia = math.hypot(jogador.rect.centerx - self.rect.centerx, jogador.rect.centery - self.rect.centery)
+            if distancia < menor_distancia:
+                menor_distancia = distancia
+                jogador_mais_proximo = jogador
+        return jogador_mais_proximo
 
-        # Verifica a colisão com blocos
-        for bloco in self.mapa.bloco:
-            if self.rect.colliderect(bloco.rect):
-                self.direcao = 'esquerda' if self.direcao == 'direita' else 'direita'
-
-    def explodir(self, jogador=None):
-        if not self.explodido:
-            self.explodido = True
-            explosao = Explosao(self.rect.center, (self.rect.width, self.rect.height), self.tempo_animacao, self.mapa)
-            self.mapa.explosoes.add(explosao)
-            if jogador:
-                jogador.sofrer_dano(self)
+    def verificar_colisoes(self):
+        # Verifica colisão com jogadores
+        jogador_colidido = pygame.sprite.spritecollideany(self, self.mapa.jogadores)
+        if jogador_colidido:
+            self.explodir(jogador_colidido)
+        
+        # Verifica se está no raio de explosão de uma bomba
+        explosao_colidida = pygame.sprite.spritecollideany(self, self.mapa.explosoes)
+        if explosao_colidida:
+            self.sofrer_dano(explosao_colidida)
+    
+    def explodir(self, jogador):
+        # Matar o jogador instantaneamente
+        jogador.morrer()
+        # Remover o inimigo do jogo
+        self.kill()
+    
+    def sofrer_dano(self, explosao):
+        self.__vida -= 1
+        if self.__vida <= 0:
             self.kill()
+    
+    def update(self, dt ):
+        self.movimentar(dt)
+        self.verificar_colisoes()
+    
+    def draw(self, tela):
+        tela.blit(self.image, self.rect)

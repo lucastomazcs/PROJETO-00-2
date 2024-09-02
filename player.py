@@ -6,7 +6,7 @@ from poderes import Poder
 from mapa import Mapa
 
 class Player(Personagem, Sprite):
-    def __init__(self, posicao, vida, velocidade, range_bomba, mapa, dificuldade, tamanho, controles=None):
+    def __init__(self, posicao, vida, velocidade, range_bomba, mapa, dificuldade, tamanho, controles=None, jogador_id=1):
         # Inicializa a classe base Personagem
         Personagem.__init__(self, vida, posicao, velocidade, range_bomba)
         
@@ -23,21 +23,8 @@ class Player(Personagem, Sprite):
         self.tempo_invulnerabilidade = 1.0  # Tempo de invulnerabilidade em segundos
         self.ultimo_tempo_dano = 0
 
-        try:
-        # Tenta carregar as imagens de animação do jogador
-            self.images = [
-                pygame.transform.scale(pygame.image.load('Bomberman/bomberman01.png').convert_alpha(), tamanho),
-                pygame.transform.scale(pygame.image.load('Bomberman/bomberman02.png').convert_alpha(), tamanho),
-                pygame.transform.scale(pygame.image.load('Bomberman/bomberman03.png').convert_alpha(), tamanho),
-                pygame.transform.scale(pygame.image.load('Bomberman/bomberman04.png').convert_alpha(), tamanho)
-            ]
-        except pygame.error as e:
-            print(f'Erro ao carregar as imagens do jogador: {e}')
-            #Cria uma imagem generica como fallback
-            self.images = [
-                pygame.surface(tamanho)
-            ]
-            self.images[0].fill((255, 0, 0)) #Cor vermelha indentificando sinal de erro
+        # Define imagens específicas para cada jogador
+        self.images = self.carregar_imagens(jogador_id, tamanho)
         
         self.image_index = 0
         self.image = self.images[self.image_index]
@@ -65,6 +52,31 @@ class Player(Personagem, Sprite):
         
         # Configura as vidas iniciais do jogador com base na dificuldade
         self.configurar_vidas_iniciais()
+
+    def carregar_imagens(self, jogador_id, tamanho):
+        try:
+            if jogador_id == 1:
+                return [
+                    pygame.transform.scale(pygame.image.load('Bomberman/bomberman_frente.png').convert_alpha(), tamanho),
+                    pygame.transform.scale(pygame.image.load('Bomberman/lado_direito_branco.png').convert_alpha(), tamanho),
+                    pygame.transform.scale(pygame.image.load('Bomberman/bomberman_tras.png').convert_alpha(), tamanho),
+                    pygame.transform.scale(pygame.image.load('Bomberman/lado_esquerdo_branco.png').convert_alpha(), tamanho)
+                ]
+            elif jogador_id == 2:
+                return [
+                    pygame.transform.scale(pygame.image.load('Bomberman/bomberman_preto_frente.png').convert_alpha(), tamanho),
+                    pygame.transform.scale(pygame.image.load('Bomberman/bomberman_preto_lado_direito.png').convert_alpha(), tamanho),
+                    pygame.transform.scale(pygame.image.load('Bomberman/bomberman_preto_tras.png').convert_alpha(), tamanho),
+                    pygame.transform.scale(pygame.image.load('Bomberman/bomberman_preto_lado_esquerdo.png').convert_alpha(), tamanho)
+                ]
+            else:
+                raise ValueError("ID do jogador inválido")
+        except pygame.error as e:
+            print(f'Erro ao carregar as imagens do jogador {jogador_id}: {e}')
+            # Cria uma imagem genérica como fallback
+            imagem_fallback = pygame.Surface(tamanho)
+            imagem_fallback.fill((255, 0, 0))  # Cor vermelha indicando sinal de erro
+            return [imagem_fallback] * 4
 
     @property
     def vida_maxima(self):
@@ -163,7 +175,6 @@ class Player(Personagem, Sprite):
             current_time = pygame.time.get_ticks() / 1000
             if current_time - self.ultimo_tempo_dano > self.tempo_invulnerabilidade:
                 self.invulneravel = False
-
 
         for poder in pygame.sprite.spritecollide(self, self.mapa.poderes, True):
             self.pegar_poder(poder)

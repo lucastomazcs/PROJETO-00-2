@@ -52,22 +52,35 @@ class Personagem:
                    self.rect.top = sprite.rect.bottom
 
     def plantar_bomba(self, dt):
-        current_time = pygame.time.get_ticks() / 1000 #Obtem o tempo atual em segundos
-        if current_time - self.tempo_ultimo_plante >= self.intervalo_bomba:
-            if self.image == self.images[0]:
-                bomba_pos = (self.rect.centerx - 25, (self.rect.bottom + self.rect.height // 2) - 10)
-            elif self.image == self.images[1]:  #Imagem apontando para direita
-                bomba_pos = ((self.rect.right + self.rect.width // 2) - 20, self.rect.centery - 19)
-            elif self.image == self.images[2]:  #Imagem apontando para cima
-                bomba_pos = (self.rect.centerx - 20, (self.rect.top - self.rect.height // 2) - 20)
-            elif self.image == self.images[3]:  #Imagem apontando para esquerda
-                bomba_pos = (self.rect.left - 40, self.rect.centery - 20)
-                        
-            bomba = Bomba(bomba_pos, 4.0, 50, (40, 40), self.mapa)
+       try:
+            current_time = pygame.time.get_ticks() / 1000 #Obtem o tempo atual em segundos
+            if current_time - self.tempo_ultimo_plante >= self.intervalo_bomba:
+                if self.image == self.images[0]:
+                    bomba_pos = (self.rect.centerx - 25, (self.rect.bottom + self.rect.height // 2) - 10)
+                elif self.image == self.images[1]:  #Imagem apontando para direita
+                    bomba_pos = ((self.rect.right + self.rect.width // 2) - 20, self.rect.centery - 19)
+                elif self.image == self.images[2]:  #Imagem apontando para cima
+                    bomba_pos = (self.rect.centerx - 20, (self.rect.top - self.rect.height // 2) - 20)
+                elif self.image == self.images[3]:  #Imagem apontando para esquerda
+                    bomba_pos = (self.rect.left - 40, self.rect.centery - 20)
+                else:
+                    raise ValueError("Direção da imagem não reconhecida.")
 
-            self.mapa.bombas.add(bomba)
-            self.tempo_ultimo_plante = current_time 
-    
+                #Cria a bomba       
+                bomba = Bomba(bomba_pos, 4.0, 50, (40, 40), self.mapa)
+                self.mapa.bombas.add(bomba)
+                self.tempo_ultimo_plante = current_time 
+        
+       except ValueError as ve:
+           print(f"Erro ao determinar posição da bomba: {ve}")
+       except TypeError as te:
+           print(f"Erro ao criar bomba: {te}")
+       except AttributeError as ae:
+           print(f"Erro de atributo ao criar bomba: {ae}")
+       except Exception as e:
+           print(f"Erro inesperado ao plantar bomba: {e}")
+
+
     def sofrer_dano(self, fonte):
         
         current_time = pygame.time.get_ticks() / 1000
@@ -89,7 +102,3 @@ class Personagem:
         if self.__vida <= 0:
             print("O jogador morreu!")
             self.kill()  # Remover o jogador do grupo ou do jogo
-          
-
-    
-

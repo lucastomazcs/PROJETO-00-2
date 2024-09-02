@@ -23,14 +23,21 @@ class Player(Personagem, Sprite):
         self.tempo_invulnerabilidade = 1.0  # Tempo de invulnerabilidade em segundos
         self.ultimo_tempo_dano = 0
 
-
-        # Carrega as imagens de animação do jogador
-        self.images = [
-            pygame.transform.scale(pygame.image.load('Bomberman/bomberman01.png').convert_alpha(), tamanho),
-            pygame.transform.scale(pygame.image.load('Bomberman/bomberman02.png').convert_alpha(), tamanho),
-            pygame.transform.scale(pygame.image.load('Bomberman/bomberman03.png').convert_alpha(), tamanho),
-            pygame.transform.scale(pygame.image.load('Bomberman/bomberman04.png').convert_alpha(), tamanho)
-        ]
+        try:
+        # Tenta carregar as imagens de animação do jogador
+            self.images = [
+                pygame.transform.scale(pygame.image.load('Bomberman/bomberman01.png').convert_alpha(), tamanho),
+                pygame.transform.scale(pygame.image.load('Bomberman/bomberman02.png').convert_alpha(), tamanho),
+                pygame.transform.scale(pygame.image.load('Bomberman/bomberman03.png').convert_alpha(), tamanho),
+                pygame.transform.scale(pygame.image.load('Bomberman/bomberman04.png').convert_alpha(), tamanho)
+            ]
+        except pygame.error as e:
+            print(f'Erro ao carregar as imagens do jogador: {e}')
+            #Cria uma imagem generica como fallback
+            self.images = [
+                pygame.surface(tamanho)
+            ]
+            self.images[0].fill((255, 0, 0)) #Cor vermelha indentificando sinal de erro
         
         self.image_index = 0
         self.image = self.images[self.image_index]

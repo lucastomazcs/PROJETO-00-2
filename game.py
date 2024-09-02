@@ -10,6 +10,7 @@ from botao import Botao
 import time
 from poderes import Poder
 
+
 class Jogo:
     def __init__(self, dificuldade='', numero_jogadores=1):
         pygame.init()
@@ -45,6 +46,8 @@ class Jogo:
         self.velocidade_inimigo = 100  # Valor padrão
         self.vida_inimigo = 3  # Valor padrão
         self.vida_jogador = 3
+      
+
 
         self.dificuldade = dificuldade
         self.numero_jogadores = numero_jogadores
@@ -59,7 +62,7 @@ class Jogo:
 
         # Criação do inimigo
         self.inimigo = Inimigo((self.tamanho_bloco * 14, self.tamanho_bloco * 14), self.vida_inimigo, self.velocidade_inimigo, 'direcao', self.mapa, tamanho=tamanho_imagem_inimigo)
-
+        
         # Chama o método de ajustar dificuldade após criar os objetos
         self.ajustar_dificuldade(self.dificuldade)
 

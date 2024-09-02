@@ -9,6 +9,7 @@ from config import Configurações
 from botao import Botao
 import time
 from poderes import Poder
+from inimigoexplosivo import InimigoExplosivo
 
 
 class Jogo:
@@ -56,6 +57,8 @@ class Jogo:
         self.mapa = Mapa(self.num_blocos_x, self.num_blocos_y, self.tamanho_bloco, self.tela, dificuldade)
         tamanho_imagem = (self.tamanho_bloco - 9, self.tamanho_bloco - 9)
         tamanho_imagem_inimigo = (self.tamanho_bloco - 9, self.tamanho_bloco - 9)
+        # Definindo o tamanho da imagem do inimigo explosivo
+        tamanho_imagem_explosivo = (self.tamanho_bloco - 9, self.tamanho_bloco - 9)
 
         # Criação do jogador
         self.jogador = Player((60, 60), self.vida_jogador, self.velocidade_jogador, 3, self.mapa,self.dificuldade, tamanho=tamanho_imagem)
@@ -63,6 +66,18 @@ class Jogo:
         # Criação do inimigo
         self.inimigo = Inimigo((self.tamanho_bloco * 14, self.tamanho_bloco * 14), self.vida_inimigo, self.velocidade_inimigo, 'direcao', self.mapa, tamanho=tamanho_imagem_inimigo)
         
+        # Criação do inimigo explosivo na parte inferior do mapa
+        posicao_explosivo = (self.tamanho_bloco * 7, self.altura - tamanho_imagem_explosivo[1])
+        self.inimigo_explosivo = InimigoExplosivo(
+        posicao=posicao_explosivo,
+        tamanho=tamanho_imagem_explosivo,
+        tempo_animacao=2,  # Ajuste conforme necessário
+        mapa=self.mapa,
+        velocidade=2,      # Ajuste conforme necessário
+        dano_explosao=5,   # Ajuste conforme necessário
+        intervalo_movimento=1  # Ajuste conforme necessário
+        )
+
         # Chama o método de ajustar dificuldade após criar os objetos
         self.ajustar_dificuldade(self.dificuldade)
 
@@ -74,10 +89,12 @@ class Jogo:
 
         self.mapa.jogadores = [self.jogador]
         self.mapa.inimigos = [self.inimigo]
+        self.mapa.inimigos.append(self.inimigo_explosivo)
 
         self.sprites = pygame.sprite.Group()
         self.sprites.add(self.jogador)
         self.sprites.add(self.inimigo)
+        self.sprites.add(self.inimigo_explosivo)
 
         # Verifica se o número de jogadores é igual a 2 para adicionar o segundo:
         if self.numero_jogadores == 2:
@@ -258,6 +275,7 @@ class Jogo:
                     self.jogador2.update(dt)
 
                 self.inimigo.update(self.mapa.jogadores, dt)
+                self.inimigo_explosivo.update(dt)
 
                 # Verifica se o jogador colidiu com algum poder
                 poder_coletado = pygame.sprite.spritecollideany(self.jogador, self.mapa.poderes)
@@ -291,7 +309,7 @@ class Jogo:
                     self.game_over = True
 
                 # Verifica se o inimigo foi derrotado
-                if not self.inimigo.alive():
+                if not self.inimigo.alive() and not self.inimigo_explosivo.alive():
                     self.vitoria = True
 
             elif self.game_over:

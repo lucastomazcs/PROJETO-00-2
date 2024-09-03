@@ -43,6 +43,7 @@ class Explosao(Sprite): #herança da classe Sprite
             else:
                 self.causar_dano()
                 self.kill()
+        
             
     def causar_dano(self):
         for sprite in pygame.sprite.spritecollide(self, self.mapa.jogadores, False):

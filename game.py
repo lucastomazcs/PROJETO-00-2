@@ -55,7 +55,7 @@ class Jogo:
 
         # Inicializa o mapa, jogador e inimigo
         self.mapa = Mapa(self.num_blocos_x, self.num_blocos_y, self.tamanho_bloco, self.tela, dificuldade)
-        tamanho_imagem = (self.tamanho_bloco - 2, self.tamanho_bloco - 2)
+        tamanho_imagem = (self.tamanho_bloco - 8, self.tamanho_bloco - 8)
         tamanho_imagem_inimigo = (self.tamanho_bloco - 9, self.tamanho_bloco - 9)
         
         # Criação do jogador
@@ -65,7 +65,7 @@ class Jogo:
         self.inimigo = Inimigo((self.tamanho_bloco * 14, self.tamanho_bloco * 14), self.vida_inimigo, self.velocidade_inimigo, 'direcao', self.mapa, tamanho=tamanho_imagem_inimigo)
         
         # Exemplo: adicionar um inimigo explosivo ao mapa
-        self.inimigo_explosivo = InimigoExplosivo(posicao=(60, 800), tamanho=(50, 50), velocidade=2, mapa=self.mapa)
+        self.inimigo_explosivo = InimigoExplosivo(posicao=(60, 800), tamanho=(120, 120), velocidade=10, mapa=self.mapa,raio_explosao= 50)
 
         # Chama o método de ajustar dificuldade após criar os objetos
         self.ajustar_dificuldade(self.dificuldade)
@@ -302,7 +302,7 @@ class Jogo:
                     self.game_over = True
 
                 # Verifica se o inimigo foi derrotado
-                if not self.inimigo.alive():
+                if not self.inimigo.alive() and not self.inimigo_explosivo.alive():
                     self.vitoria = True
 
             elif self.game_over:

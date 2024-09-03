@@ -107,11 +107,12 @@ class Player(Personagem, Sprite):
     def pegar_poder(self, poder):
         if poder.tipo not in self.poder_pegos:
             self.poder_pegos.add(poder.tipo)
-
             if poder.tipo == 'vida':
-                self.aumentar_vida()  # Aumenta a vida ao pegar o poder de vida
+                self.aumentar_vida()  # Apenas aumenta a vida
+            elif poder.tipo == 'velocidade':
+                self.aumentar_velocidade()  # Apenas aumenta a velocidade
 
-            poder.aplicar_poder(self)
+            poder.aplicar_poder(self)  # Aplica o poder, se necessário
 
     def movimento(self):
         keys = pygame.key.get_pressed()

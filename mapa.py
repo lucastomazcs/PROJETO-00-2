@@ -16,9 +16,10 @@ class Mapa(Bloco):
         self.num_blocos_y = num_blocos_y
         self.tamanho_bloco = tamanho_bloco
         
-   
-
-        
+        # Calculando a largura e a altura do mapa
+        self.largura = num_blocos_x * tamanho_bloco
+        self.altura = num_blocos_y * tamanho_bloco
+               
         # Definindo mapa
         self.mapa = [
             "WWWWWWWWWWWWWWW",

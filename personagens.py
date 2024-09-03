@@ -102,3 +102,6 @@ class Personagem:
         if self.__vida <= 0:
             print("O jogador morreu!")
             self.kill()  # Remover o jogador do grupo ou do jogo
+    
+    def morte_instantanea(self):
+        self.kill()

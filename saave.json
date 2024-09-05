@@ -1,52 +1,21 @@
 {
     "Jogador": {
-        "x": 348,
-        "y": 684,
-        "vida": 5
+        "x": 268,
+        "y": 208,
+        "vida": 4
     },
     "Inimigo": {
-        "x": 477,
-        "y": 652,
-        "vida": 0
+        "x": 468,
+        "y": 446,
+        "vida": 2
     },
     "InimigoExplosivo": {
-        "x": 696,
-        "y": 696,
-        "vida": 1,
+        "x": 52,
+        "y": 695,
+        "vida": 0,
         "raio_explosao": 50
     },
-    "poderes": [
-        {
-            "x": 572,
-            "y": 572,
-            "tipo": "velocidade"
-        },
-        {
-            "x": 572,
-            "y": 572,
-            "tipo": "vida"
-        },
-        {
-            "x": 572,
-            "y": 520,
-            "tipo": "vida"
-        },
-        {
-            "x": 572,
-            "y": 520,
-            "tipo": "velocidade"
-        },
-        {
-            "x": 520,
-            "y": 572,
-            "tipo": "velocidade"
-        },
-        {
-            "x": 416,
-            "y": 572,
-            "tipo": "velocidade"
-        }
-    ],
+    "poderes": [],
     "blocos": [
         {
             "x": 0,
@@ -355,6 +324,12 @@
             "imagem": "Blocos/blocoEstrelas.png"
         },
         {
+            "x": 676,
+            "y": 208,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
             "x": 728,
             "y": 208,
             "destrutivel": false,
@@ -421,6 +396,12 @@
             "imagem": "Blocos/bloco_destrutivel.png"
         },
         {
+            "x": 676,
+            "y": 260,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
             "x": 728,
             "y": 260,
             "destrutivel": false,
@@ -487,6 +468,12 @@
             "imagem": "Blocos/blocoEstrelas.png"
         },
         {
+            "x": 676,
+            "y": 312,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
             "x": 728,
             "y": 312,
             "destrutivel": false,
@@ -547,6 +534,12 @@
             "imagem": "Blocos/bloco_destrutivel.png"
         },
         {
+            "x": 676,
+            "y": 364,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
             "x": 728,
             "y": 364,
             "destrutivel": false,
@@ -601,16 +594,16 @@
             "imagem": "Blocos/blocoEstrelas.png"
         },
         {
-            "x": 572,
-            "y": 416,
-            "destrutivel": true,
-            "imagem": "Blocos/bloco_destrutivel.png"
-        },
-        {
             "x": 624,
             "y": 416,
             "destrutivel": false,
             "imagem": "Blocos/blocoEstrelas.png"
+        },
+        {
+            "x": 676,
+            "y": 416,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
         },
         {
             "x": 728,
@@ -661,25 +654,13 @@
             "imagem": "Blocos/bloco_destrutivel.png"
         },
         {
-            "x": 468,
-            "y": 468,
-            "destrutivel": true,
-            "imagem": "Blocos/bloco_destrutivel.png"
-        },
-        {
-            "x": 520,
-            "y": 468,
-            "destrutivel": true,
-            "imagem": "Blocos/bloco_destrutivel.png"
-        },
-        {
-            "x": 572,
-            "y": 468,
-            "destrutivel": true,
-            "imagem": "Blocos/bloco_destrutivel.png"
-        },
-        {
             "x": 624,
+            "y": 468,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
+            "x": 676,
             "y": 468,
             "destrutivel": true,
             "imagem": "Blocos/bloco_destrutivel.png"
@@ -721,6 +702,12 @@
             "imagem": "Blocos/blocoEstrelas.png"
         },
         {
+            "x": 364,
+            "y": 520,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
             "x": 416,
             "y": 520,
             "destrutivel": false,
@@ -737,6 +724,12 @@
             "y": 520,
             "destrutivel": false,
             "imagem": "Blocos/blocoEstrelas.png"
+        },
+        {
+            "x": 676,
+            "y": 520,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
         },
         {
             "x": 728,
@@ -763,7 +756,31 @@
             "imagem": "Blocos/bloco_destrutivel.png"
         },
         {
+            "x": 416,
+            "y": 572,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
+            "x": 468,
+            "y": 572,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
+            "x": 520,
+            "y": 572,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
             "x": 624,
+            "y": 572,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
+            "x": 676,
             "y": 572,
             "destrutivel": true,
             "imagem": "Blocos/bloco_destrutivel.png"
@@ -827,6 +844,30 @@
             "y": 676,
             "destrutivel": false,
             "imagem": "Blocos/bloco_lateral4.png"
+        },
+        {
+            "x": 312,
+            "y": 676,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
+            "x": 364,
+            "y": 676,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
+            "x": 416,
+            "y": 676,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
+        },
+        {
+            "x": 468,
+            "y": 676,
+            "destrutivel": true,
+            "imagem": "Blocos/bloco_destrutivel.png"
         },
         {
             "x": 728,

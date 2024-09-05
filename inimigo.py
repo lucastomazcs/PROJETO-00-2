@@ -15,6 +15,7 @@ class Inimigo(Personagem, Sprite):  # Inimigo herda de Personagem e Sprite
         
         self.mapa = mapa
         self.__direcao = direcao
+        self.morto = False  # Adicionado atributo de morto
 
         # Carregando imagens inimigo
         self.images = [
@@ -51,6 +52,9 @@ class Inimigo(Personagem, Sprite):  # Inimigo herda de Personagem e Sprite
         return self.__direcao
 
     def movimento(self, posicao_player, dt: float):
+        if self.morto:  # Não movimenta se estiver morto
+            return
+
         posicao_original = self.rect.topleft
     
         # Calcula a direção para o jogador:
@@ -91,7 +95,7 @@ class Inimigo(Personagem, Sprite):  # Inimigo herda de Personagem e Sprite
         return False
 
     def plantar_bomba(self):
-        if not self.alive(): # Verifica se o inimigo está vivo
+        if self.morto:  # Não planta bomba se estiver morto
             return
 
         current_time = pygame.time.get_ticks() / 1000
@@ -105,7 +109,9 @@ class Inimigo(Personagem, Sprite):  # Inimigo herda de Personagem e Sprite
         self.vida = nova_vida
 
     def sofrer_dano(self, fonte):
-        
+        if self.morto:  # Não sofre dano se estiver morto
+            return
+
         current_time = pygame.time.get_ticks() / 1000
 
         # Evita dano de suas próprias bombas
@@ -123,11 +129,18 @@ class Inimigo(Personagem, Sprite):  # Inimigo herda de Personagem e Sprite
         self.invulneravel = True
         self.ultimo_tempo_dano = current_time
 
+        # Se a vida for zero ou menor, marcar como morto
+        if self.vida <= 0:
+            self.morrer()
+
     def matar_jogador(self, jogador):
-        if pygame.sprite.collide_rect(self, jogador):
+        if not self.morto and pygame.sprite.collide_rect(self, jogador):
             jogador.sofrer_dano(self)  # Aplica dano ao jogador
 
     def animacao(self, dt: float):
+        if self.morto:  # Não atualiza animação se estiver morto
+            return
+
         self.contador_tempo += dt
         if self.contador_tempo >= self.tempo_animacao:
             self.contador_tempo = 0
@@ -135,9 +148,9 @@ class Inimigo(Personagem, Sprite):  # Inimigo herda de Personagem e Sprite
             self.image = self.images[self.image_index]
 
     def update(self, jogadores, dt: float):
-        if not self.alive():
+        if self.morto:  # Não atualiza se estiver morto
             return
-        
+
         # Escolhe o jogador mais próximo:
         jogador_mais_proximo = self.encontrar_jogador_mais_proximo(jogadores)
 
@@ -180,6 +193,7 @@ class Inimigo(Personagem, Sprite):  # Inimigo herda de Personagem e Sprite
         return math.hypot(delta_x, delta_y)
     
     def morrer(self):
-        if self.vida <= 0:
+        if not self.morto:  # Marca como morto apenas se não estiver morto
             print("Inimigo morreu!")
+            self.morto = True
             self.kill()  # Remove o inimigo do grupo e para de atualizá-lo

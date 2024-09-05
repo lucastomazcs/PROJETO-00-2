@@ -12,6 +12,7 @@ class InimigoExplosivo(Sprite):
         self.__vida = 1  # O inimigo morre com uma explosão
         self.__dano_explosao = 9999
         self.__raio_explosao = raio_explosao
+        self.morto = False  # Adicionado atributo de morto
 
         # Variável para controlar o tempo entre mudanças de direção
         self.tempo_mudanca_direcao = 10.0  # Tempo em segundos para mudar de direção
@@ -52,15 +53,16 @@ class InimigoExplosivo(Sprite):
     def vida(self, valor):
         if valor >= 0:
             self.__vida = valor
-        
-    
+
     @raio_explosao.setter
     def raio_explosao(self, valor):
         if valor >= 0:
             self.__raio_explosao = valor
-        
-    
+
     def movimentar(self, dt):
+        if self.morto:  # Não movimenta se estiver morto
+            return
+
         # Tempo atual
         current_time = pygame.time.get_ticks() / 1000
 
@@ -104,6 +106,9 @@ class InimigoExplosivo(Sprite):
                 break  # Interrompe o loop ao detectar a colisão
 
     def verificar_colisoes(self):
+        if self.morto:  # Não verifica colisões se estiver morto
+            return
+
         # Verifica colisão com jogadores
         jogador_colidido = pygame.sprite.spritecollideany(self, self.mapa.jogadores)
         if jogador_colidido:
@@ -129,15 +134,20 @@ class InimigoExplosivo(Sprite):
         self.kill()  # Remove o inimigo do grupo
 
     def sofrer_dano(self, explosao):
+        if self.morto:  # Não sofre dano se estiver morto
+            return
+
         # Aqui você deve verificar a lógica interna da explosão para causar dano
         self.__vida -= 1
         if self.__vida <= 0:
+            self.morto = True
             self.explodir(None)  # Explode ao morrer
 
     def update(self, dt):
-        if self.vida > 0:  # Só movimentar e verificar colisões se o inimigo estiver vivo
+        if self.vida > 0 and not self.morto:  # Só movimentar e verificar colisões se o inimigo estiver vivo
             self.movimentar(dt)
             self.verificar_colisoes()
 
     def draw(self, tela):
-        tela.blit(self.image, self.rect)
+        if not self.morto:  # Só desenha se o inimigo estiver vivo
+            tela.blit(self.image, self.rect)

@@ -53,18 +53,16 @@ class Jogo:
         self.vida_inimigo = 3  # Valor padrão
         self.vida_jogador = 3
       
-
-
         self.dificuldade = dificuldade
-        self.numero_jogadores = numero_jogadores
-
+        self.estado = 'Inicial'  # Inicialize a variável estado aqui
+        
         # Inicializa o mapa, jogador e inimigo
         self.mapa = Mapa(self.num_blocos_x, self.num_blocos_y, self.tamanho_bloco, self.tela, dificuldade)
         tamanho_imagem = (self.tamanho_bloco - 8, self.tamanho_bloco - 8)
         tamanho_imagem_inimigo = (self.tamanho_bloco - 9, self.tamanho_bloco - 9)
         
         # Criação do jogador
-        self.jogador = Player((60, 60), self.vida_jogador, self.velocidade_jogador, 3, self.mapa,self.dificuldade, tamanho=tamanho_imagem, jogador_id=1)
+        self.jogador = Player((60, 60), self.vida_jogador, self.velocidade_jogador, 3, self.mapa, self.dificuldade, tamanho=tamanho_imagem, jogador_id=1)
 
         # Criação do inimigo
         self.inimigo = Inimigo((self.tamanho_bloco * 14, self.tamanho_bloco * 14), self.vida_inimigo, self.velocidade_inimigo, 'direcao', self.mapa, tamanho=tamanho_imagem_inimigo)
@@ -72,7 +70,8 @@ class Jogo:
         # Criação do inimigo explosivo
         self.inimigo_explosivo = InimigoExplosivo((self.tamanho_bloco * 5, self.tamanho_bloco * 5), (self.tamanho_bloco - 9, self.tamanho_bloco - 9), self.velocidade_inimigo, self.mapa, raio_explosao=50)
 
-
+        # Passa o nome do arquivo para o Salvar
+        self.salvar = Salvar('saave.json')
 
         # Chama o método de ajustar dificuldade após criar os objetos
         self.ajustar_dificuldade(self.dificuldade)
@@ -86,36 +85,16 @@ class Jogo:
         self.mapa.jogadores = [self.jogador]
         self.mapa.inimigos = [self.inimigo, self.inimigo_explosivo]
         
-
         self.sprites = pygame.sprite.Group()
         self.sprites.add(self.jogador)
         self.sprites.add(self.inimigo)
         self.sprites.add(self.inimigo_explosivo)
 
-        # Verifica se o número de jogadores é igual a 2 para adicionar o segundo:
-        if self.numero_jogadores == 2:
-            controles_player2 = {
-                'cima': pygame.K_UP,
-                'baixo': pygame.K_DOWN,
-                'esquerda': pygame.K_LEFT,
-                'direita': pygame.K_RIGHT,
-                'bomba': pygame.K_KP_ENTER
-            }
-            self.jogador2 = Player((700, 60), self.vida_jogador, self.velocidade_jogador, 3, self.mapa, self.dificuldade, tamanho=tamanho_imagem, controles=controles_player2,jogador_id=2)
-            self.mapa.jogadores.append(self.jogador2)
-            self.sprites.add(self.jogador2)
-
         # Criando botões:
         self.botao_start = pygame.Rect(300, 455, 150, 50)
         self.botao_sair = pygame.Rect(300, 530, 150, 50)
 
-        self.salvar = Salvar()
-
-        self.estado = "Inicial"  # Define Estado inicial do Jogo
-
         # Criando botões usando métodos estáticos da classe Botao
-        self.botao_1player = Botao.criar_botao_1player(self.largura, self.altura)
-        self.botao_2player = Botao.criar_botao_2player(self.largura, self.altura)
         self.botao_facil = Botao.criar_botao_facil(self.largura, self.altura)
         self.botao_medio = Botao.criar_botao_medio(self.largura, self.altura)
         self.botao_dificil = Botao.criar_botao_dificil(self.largura, self.altura)
@@ -125,8 +104,6 @@ class Jogo:
         self.botao_salvar = Botao.criar_botao_salvar(self.largura, self.altura, self.salvar_jogo)
         self.botao_sair = Botao.criar_botao_sair(self.largura, self.altura, self.sair_jogo)
 
-
-        self.botoes_jogadores = [self.botao_1player, self.botao_2player]
         self.botoes_dificuldade = [self.botao_facil, self.botao_medio, self.botao_dificil]
         self.botoes_menu = [self.botao_novo_jogo, self.botao_continuar]
 
@@ -166,8 +143,6 @@ class Jogo:
 
         for botao in self.botoes_dificuldade:
             botao.desenhar(self.tela)
-        for botao in self.botoes_jogadores:
-            botao.desenhar(self.tela)
 
         pygame.display.flip()
 
@@ -198,7 +173,6 @@ class Jogo:
         self.botao_sair.desenhar(self.tela)
         pygame.display.flip()
 
-
     def tela_menu(self):
         imagem_inicio = pygame.image.load("telas/tela_inicial.png")
         imagem_inicio = pygame.transform.scale(imagem_inicio, (self.largura, self.altura))
@@ -211,6 +185,7 @@ class Jogo:
             botao.desenhar(self.tela)
 
         pygame.display.flip()
+
     def tela_game_over(self):
         imagem_game_over = pygame.image.load("telas/Tela_Game_Overr.png")
         imagem_game_over = pygame.transform.scale(imagem_game_over, (self.largura, self.altura))
@@ -247,7 +222,7 @@ class Jogo:
                 elif self.vitoria and evento.key == pygame.K_q:
                     self.rodando = False
                 elif evento.key == pygame.K_t:
-                    self.salvar.salvar_jogo(self.jogador, self.inimigo, self.inimigo_explosivo, self.mapa)
+                    self.salvar_jogo()
                 elif evento.key == pygame.K_l:
                     self.salvar.carregar_jogo(self.jogador, self.inimigo, self.inimigo_explosivo, self.mapa)
                     self.estado = "Jogando"
@@ -270,13 +245,8 @@ class Jogo:
                         self.selecao_dificuldade = 'Médio'
                     elif self.botao_dificil.rect.collidepoint(evento.pos):
                         self.selecao_dificuldade = 'Difícil'
-                    if self.botao_1player.rect.collidepoint(evento.pos):
-                        self.selecao_jogadores = 1
-                    elif self.botao_2player.rect.collidepoint(evento.pos):
-                        self.selecao_jogadores = 2
-                    if self.selecao_dificuldade and self.selecao_jogadores:
+                    if self.selecao_dificuldade:
                         self.ajustar_dificuldade(self.selecao_dificuldade)
-                        self.numero_jogadores = self.selecao_jogadores
                         self.reiniciar_jogo()
                         self.estado = 'Jogando'
                 elif self.paused:
@@ -289,7 +259,7 @@ class Jogo:
 
     def reiniciar_jogo(self):
         # Reiniciar o jogo com base na seleção de dificuldade e número de jogadores
-        self.__init__(dificuldade=self.selecao_dificuldade, numero_jogadores=self.selecao_jogadores)
+        self.__init__(dificuldade=self.selecao_dificuldade)
         self.ajustar_dificuldade(self.dificuldade)
 
     def atualizar_tempo(self):
@@ -302,7 +272,6 @@ class Jogo:
             self.tela_pausa()
             self.clock.tick(60)
             return  # Não atualiza o jogo se estiver pausado
-
 
         self.atualizar_tempo()
         if self.estado == "Inicial":
@@ -320,28 +289,17 @@ class Jogo:
             if not self.game_over and not self.vitoria:
                 self.jogador.update(dt)
 
-                # Se o número de jogadores for 2, atualize o segundo jogador:
-                if self.numero_jogadores == 2 and hasattr(self, 'jogador2'):
-                    self.jogador2.update(dt)
-
                 self.inimigo.update(self.mapa.jogadores, dt)
 
                 # Atualizar e desenhar o inimigo explosivo
                 self.inimigo_explosivo.update(dt)
                 self.inimigo_explosivo.draw(self.tela)
 
-
                 # Verifica se o jogador colidiu com algum poder
                 poder_coletado = pygame.sprite.spritecollideany(self.jogador, self.mapa.poderes)
                 if poder_coletado:
                     poder_coletado.aplicar_poder(self.jogador)
                     poder_coletado.kill()
-
-                if self.numero_jogadores == 2:
-                    poder_coletado_jogador2 = pygame.sprite.spritecollideany(self.jogador2, self.mapa.poderes)
-                    if poder_coletado_jogador2:
-                        poder_coletado_jogador2.aplicar_poder(self.jogador2)
-                        poder_coletado_jogador2.kill()
 
                 self.tela.fill(self.cor_preta)
                 self.mapa.desenhar(self.tela)
@@ -356,7 +314,7 @@ class Jogo:
                 pygame.display.flip()
 
                 # Verifica se algum jogador perdeu todas as vidas
-                if not self.jogador.alive() and (self.numero_jogadores == 1 or (self.numero_jogadores == 2 and not self.jogador2.alive())):
+                if not self.jogador.alive():
                     self.game_over = True
 
                 # Verifica se o inimigo foi derrotado

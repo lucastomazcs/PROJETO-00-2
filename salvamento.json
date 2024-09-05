@@ -1,0 +1,1092 @@
+{
+    "Jogador": {
+        "x": 138,
+        "y": 268,
+        "vida": 5
+    },
+    "Inimigo": {
+        "x": 455,
+        "y": 364,
+        "vida": 2,
+        "morto": false
+    },
+    "InimigoExplosivo": {
+        "x": 695,
+        "y": 260,
+        "vida": 0,
+        "raio_explosao": 50,
+        "morto": true
+    },
+    "blocos": [
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 52,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 104,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 156,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 208,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 260,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 312,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 364,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 416,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 468,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 520,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 572,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 624,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 676,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 0,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 52,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 208,
+            "y": 52,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 260,
+            "y": 52,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 312,
+            "y": 52,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 364,
+            "y": 52,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 416,
+            "y": 52,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 468,
+            "y": 52,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 520,
+            "y": 52,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 52,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 104,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 104,
+            "y": 104,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 208,
+            "y": 104,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 312,
+            "y": 104,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 416,
+            "y": 104,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 520,
+            "y": 104,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 572,
+            "y": 104,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 624,
+            "y": 104,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 104,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 156,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 104,
+            "y": 156,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 208,
+            "y": 156,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 260,
+            "y": 156,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 312,
+            "y": 156,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 364,
+            "y": 156,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 572,
+            "y": 156,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 624,
+            "y": 156,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 156,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 208,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 104,
+            "y": 208,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 208,
+            "y": 208,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 312,
+            "y": 208,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 416,
+            "y": 208,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 520,
+            "y": 208,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 572,
+            "y": 208,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 624,
+            "y": 208,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 676,
+            "y": 208,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 208,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 260,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 260,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 312,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 52,
+            "y": 312,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 104,
+            "y": 312,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 208,
+            "y": 312,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 312,
+            "y": 312,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 364,
+            "y": 312,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 416,
+            "y": 312,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 520,
+            "y": 312,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 624,
+            "y": 312,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 312,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 364,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 52,
+            "y": 364,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 104,
+            "y": 364,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 156,
+            "y": 364,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 208,
+            "y": 364,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 364,
+            "y": 364,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 624,
+            "y": 364,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 676,
+            "y": 364,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 364,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 416,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 52,
+            "y": 416,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 104,
+            "y": 416,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 208,
+            "y": 416,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 312,
+            "y": 416,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 364,
+            "y": 416,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 416,
+            "y": 416,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 520,
+            "y": 416,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 624,
+            "y": 416,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 676,
+            "y": 416,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 416,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 468,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 52,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 104,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 208,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 260,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 312,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 364,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 416,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 468,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 520,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 624,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 676,
+            "y": 468,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 468,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 520,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 52,
+            "y": 520,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 104,
+            "y": 520,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 208,
+            "y": 520,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 312,
+            "y": 520,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 364,
+            "y": 520,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 416,
+            "y": 520,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 520,
+            "y": 520,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 624,
+            "y": 520,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 676,
+            "y": 520,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 520,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 572,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 52,
+            "y": 572,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 104,
+            "y": 572,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 156,
+            "y": 572,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 416,
+            "y": 572,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 468,
+            "y": 572,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 520,
+            "y": 572,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 624,
+            "y": 572,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 676,
+            "y": 572,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 572,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 624,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 104,
+            "y": 624,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 208,
+            "y": 624,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 312,
+            "y": 624,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 416,
+            "y": 624,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 520,
+            "y": 624,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/blocoEstrelas.png",
+            "x": 624,
+            "y": 624,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 624,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 676,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 208,
+            "y": 676,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 260,
+            "y": 676,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 312,
+            "y": 676,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 364,
+            "y": 676,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 416,
+            "y": 676,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_destrutivel.png",
+            "x": 468,
+            "y": 676,
+            "destrutivel": true,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 676,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 0,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 52,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 104,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 156,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 208,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 260,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 312,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 364,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 416,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 468,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 520,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 572,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 624,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 676,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        },
+        {
+            "imagem": "Blocos/bloco_lateral4.png",
+            "x": 728,
+            "y": 728,
+            "destrutivel": false,
+            "tamanho": 52
+        }
+    ],
+    "poderes": [
+        {
+            "x": 572,
+            "y": 520,
+            "tipo": "vida"
+        },
+        {
+            "x": 572,
+            "y": 364,
+            "tipo": "vida"
+        },
+        {
+            "x": 520,
+            "y": 364,
+            "tipo": "vida"
+        },
+        {
+            "x": 676,
+            "y": 312,
+            "tipo": "velocidade"
+        },
+        {
+            "x": 676,
+            "y": 312,
+            "tipo": "vida"
+        }
+    ]
+}

@@ -13,7 +13,7 @@ from inimigoexplosivo import InimigoExplosivo
 
 
 class Jogo:
-    def __init__(self, dificuldade='', numero_jogadores=1):
+    def __init__(self, dificuldade=''):
         pygame.init()
         pygame.mixer.init()
 
@@ -108,8 +108,7 @@ class Jogo:
         self.botoes_menu = [self.botao_novo_jogo, self.botao_continuar]
 
         self.selecao_dificuldade = None
-        self.selecao_jogadores = None
-
+    
     def ajustar_dificuldade(self, dificuldade):
         print(f"Ajustando dificuldade para: {dificuldade}")
         if dificuldade == 'Fácil':
@@ -262,10 +261,6 @@ class Jogo:
         self.__init__(dificuldade=self.selecao_dificuldade)
         self.ajustar_dificuldade(self.dificuldade)
 
-    def atualizar_tempo(self):
-        if self.estado == 'Jogando':
-            tempo_atual = time.time()
-            self.tempo_decorrido = tempo_atual - self.tempo_inicio
 
     def update(self, dt):
         if self.paused:
@@ -273,7 +268,6 @@ class Jogo:
             self.clock.tick(60)
             return  # Não atualiza o jogo se estiver pausado
 
-        self.atualizar_tempo()
         if self.estado == "Inicial":
             self.tela_inicial()
             pygame.display.flip()

@@ -6,7 +6,7 @@
     },
     "Inimigo": {
         "x": 468,
-        "y": 446,
+        "y": 423,
         "vida": 2
     },
     "InimigoExplosivo": {

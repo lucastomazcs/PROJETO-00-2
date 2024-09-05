@@ -48,7 +48,7 @@ class Botao:
     def criar_botao_facil(largura_tela, altura_tela):
         return Botao(
             x = 70,
-            y = altura_tela - 250,
+            y = (altura_tela // 2) - 100,
             largura = 200,
             altura = 120,
             texto = 'Fácil',
@@ -61,7 +61,7 @@ class Botao:
     def criar_botao_medio(largura_tela, altura_tela):
         return Botao(
             x = 300,
-            y = altura_tela - 150,
+            y = (altura_tela // 2) - 100,
             largura = 200,
             altura = 120,
             texto = 'Médio',
@@ -74,7 +74,7 @@ class Botao:
     def criar_botao_dificil(largura_tela, altura_tela):
         return Botao(
             x = 550,
-            y = altura_tela - 250,
+            y = (altura_tela // 2) - 100,
             largura = 200,
             altura = 120,
             texto = 'Difícil',
@@ -102,10 +102,10 @@ class Botao:
     @staticmethod
     def criar_botao_novo_jogo(largura_tela, altura_tela):
         return Botao(
-            x = (largura_tela // 2) - 150,
-            y = (altura_tela // 2) - 60,
-            largura = 400,
-            altura = 200,
+            x = 350,
+            y = 300,
+            largura = 80,
+            altura = 25,
             texto = 'Novo Jogo',
             cor_fundo = (0, 0, 0),
             cor_texto = (255, 255, 255),
@@ -115,10 +115,10 @@ class Botao:
     @staticmethod
     def criar_botao_continuar(largura_tela, altura_tela):
         return Botao(
-            x = (largura_tela // 2) - 150,
-            y = (altura_tela // 2) + 120,
-            largura = 400,
-            altura = 200,
+            x = 350,
+            y = 400,
+            largura = 80,
+            altura = 25,
             texto = 'Continuar',
             cor_fundo = (0, 0, 0),
             cor_texto = (255, 255, 255),
@@ -128,10 +128,10 @@ class Botao:
     @staticmethod
     def criar_botao_salvar(largura_tela, altura_tela, acao_salvar):
         return Botao(
-            x = (largura_tela // 2) - 200,  # Ajustado para centralizar
-            y = (altura_tela // 2) - 60,  # Ajustado para centralizar
-            largura = 400,  
-            altura = 200,   
+            x = 350,
+            y = 350,
+            largura = 80,  
+            altura = 25,   
             texto = 'Salvar',
             cor_fundo = (0, 0, 0),
             cor_texto = (255, 255, 255),
@@ -142,10 +142,10 @@ class Botao:
     @staticmethod
     def criar_botao_sair(largura_tela, altura_tela, acao_sair):
         return Botao(
-            x = (largura_tela // 2) - 200,  # Ajustado para centralizar
-            y = (altura_tela // 2) + 120,    # Ajustado para centralizar
-            largura = 400,  
-            altura = 200,   
+            x = 350,
+            y = 400,
+            largura = 65,  
+            altura = 25,   
             texto = 'Sair',
             cor_fundo = (0, 0, 0),
             cor_texto = (255, 255, 255),

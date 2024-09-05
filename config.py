@@ -31,13 +31,6 @@ class Configurações:
         else:
             efeito_som.set_volume(1)  # Desmuta o efeito sonoro
     
-    def digitar_nome(self, nome):
-        self.nome_jogador = nome
-    
-    def iniciar_jogo(self):
-        if self.nome_jogador:
-            self.jogo_iniciado = True
-    
     def pausar(self):
         self.jogo_pausado = not self.jogo_pausado
     
@@ -45,9 +38,6 @@ class Configurações:
         if self.jogo_pausado:
             self.jogo_pausado = False
     
-    def escolher_numero_jogadores(self, numero):
-        if numero in [1,2]:
-            self.numero_jogadores = numero
     
 
     

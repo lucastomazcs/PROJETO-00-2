@@ -98,31 +98,6 @@ class Botao:
 
         )
     
-    @staticmethod
-    def criar_botao_1player(largura_tela, altura_tela):
-        return Botao(
-            x=4,
-            y= altura_tela - 850,
-            largura= 400,
-            altura= 220,
-            texto= '',
-            cor_fundo= (0,0,0),
-            cor_texto=(255,255,255),
-            imagens= ['Botões/botao_player_1.png']
-        )
-    
-    @staticmethod
-    def criar_botao_2player(largura_tela, altura_tela):
-        return Botao(
-            x=4,
-            y= altura_tela - 650,
-            largura= 400,
-            altura=220,
-            texto= '',
-            cor_fundo= (0,0,0),
-            cor_texto= (255,255,255),
-            imagens= ['Botões/botao_player_2.png']
-        )
     
     @staticmethod
     def criar_botao_novo_jogo(largura_tela, altura_tela):

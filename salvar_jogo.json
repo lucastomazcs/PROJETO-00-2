@@ -1,0 +1,1274 @@
+{
+    "dificuldade": "Dif\u00edcil",
+    "jogador": {
+        "vida": 2,
+        "posicao": [
+            60,
+            60
+        ],
+        "velocidade": 1,
+        "range_bomba": 3,
+        "poderes": [],
+        "invulneravel": false,
+        "tempo_invulnerabilidade": 1.0,
+        "ultimo_tempo_dano": 0,
+        "image_index": 0,
+        "tempo_ultimo_plante": 0,
+        "intervalo_bomba": 3
+    },
+    "jogador2": {
+        "vida": 1,
+        "posicao": [
+            684,
+            60
+        ],
+        "velocidade": 1,
+        "range_bomba": 3,
+        "poderes": [],
+        "invulneravel": false,
+        "tempo_invulnerabilidade": 1.0,
+        "ultimo_tempo_dano": 0,
+        "image_index": 0,
+        "tempo_ultimo_plante": 0,
+        "intervalo_bomba": 3
+    },
+    "mapa": {
+        "blocos": [
+            {
+                "posicao": [
+                    0,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    52,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    104,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    156,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    208,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    260,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    312,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    364,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    416,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    468,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    520,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    572,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    624,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    676,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    728,
+                    0
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    52
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    208,
+                    52
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    260,
+                    52
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    312,
+                    52
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    364,
+                    52
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    416,
+                    52
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    468,
+                    52
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    520,
+                    52
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    52
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    104
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    104,
+                    104
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    208,
+                    104
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    312,
+                    104
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    416,
+                    104
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    520,
+                    104
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    572,
+                    104
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    624,
+                    104
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    728,
+                    104
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    156
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    104,
+                    156
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    156,
+                    156
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    208,
+                    156
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    260,
+                    156
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    312,
+                    156
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    364,
+                    156
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    572,
+                    156
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    624,
+                    156
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    156
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    208
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    52,
+                    208
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    104,
+                    208
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    208,
+                    208
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    312,
+                    208
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    416,
+                    208
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    520,
+                    208
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    572,
+                    208
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    624,
+                    208
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    676,
+                    208
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    208
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    260
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    52,
+                    260
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    104,
+                    260
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    208,
+                    260
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    312,
+                    260
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    364,
+                    260
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    416,
+                    260
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    468,
+                    260
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    572,
+                    260
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    624,
+                    260
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    676,
+                    260
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    260
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    312
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    52,
+                    312
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    104,
+                    312
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    208,
+                    312
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    312,
+                    312
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    364,
+                    312
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    416,
+                    312
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    520,
+                    312
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    572,
+                    312
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    624,
+                    312
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    676,
+                    312
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    312
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    364
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    52,
+                    364
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    104,
+                    364
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    156,
+                    364
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    208,
+                    364
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    364,
+                    364
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    468,
+                    364
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    520,
+                    364
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    572,
+                    364
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    624,
+                    364
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    676,
+                    364
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    364
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    416
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    52,
+                    416
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    104,
+                    416
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    208,
+                    416
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    312,
+                    416
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    364,
+                    416
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    416,
+                    416
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    520,
+                    416
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    572,
+                    416
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    624,
+                    416
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    676,
+                    416
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    416
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    468
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    52,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    104,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    208,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    260,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    312,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    364,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    416,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    468,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    520,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    572,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    624,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    676,
+                    468
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    468
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    520
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    52,
+                    520
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    104,
+                    520
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    208,
+                    520
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    312,
+                    520
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    364,
+                    520
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    416,
+                    520
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    520,
+                    520
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    572,
+                    520
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    624,
+                    520
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    676,
+                    520
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    520
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    572
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    52,
+                    572
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    104,
+                    572
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    156,
+                    572
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    416,
+                    572
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    468,
+                    572
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    520,
+                    572
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    572,
+                    572
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    624,
+                    572
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    676,
+                    572
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    572
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    624
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    104,
+                    624
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    208,
+                    624
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    312,
+                    624
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    416,
+                    624
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    520,
+                    624
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    624,
+                    624
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    728,
+                    624
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    676
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    208,
+                    676
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    260,
+                    676
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    312,
+                    676
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    364,
+                    676
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    416,
+                    676
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    468,
+                    676
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    520,
+                    676
+                ],
+                "destrutivel": true
+            },
+            {
+                "posicao": [
+                    728,
+                    676
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    0,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    52,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    104,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    156,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    208,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    260,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    312,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    364,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    416,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    468,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    520,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    572,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    624,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    676,
+                    728
+                ],
+                "destrutivel": false
+            },
+            {
+                "posicao": [
+                    728,
+                    728
+                ],
+                "destrutivel": false
+            }
+        ],
+        "poderes": [
+            {
+                "posicao": [
+                    260,
+                    260
+                ],
+                "tipo": "velocidade"
+            }
+        ],
+        "bombas": [
+            {
+                "posicao": [
+                    683,
+                    633
+                ],
+                "tempo": 2,
+                "raio": 30
+            }
+        ],
+        "inimigos": [
+            {
+                "posicao": [
+                    683,
+                    633
+                ],
+                "vida": 4,
+                "direcao": "direcao"
+            },
+            {
+                "posicao": [
+                    260,
+                    339
+                ],
+                "vida": 1,
+                "direcao": "frente"
+            }
+        ],
+        "explosoes": []
+    }
+}

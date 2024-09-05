@@ -52,16 +52,14 @@ class InimigoExplosivo(Sprite):
     def vida(self, valor):
         if valor >= 0:
             self.__vida = valor
-        else:
-            raise ValueError("A vida não pode ser negativa.")
+        
     
     @raio_explosao.setter
     def raio_explosao(self, valor):
         if valor >= 0:
             self.__raio_explosao = valor
-        else:
-            raise ValueError("O raio de explosão não pode ser negativo.")
-
+        
+    
     def movimentar(self, dt):
         # Tempo atual
         current_time = pygame.time.get_ticks() / 1000

@@ -4,9 +4,8 @@ import math
 from explosao import Explosao
 from poderes import Poder
 
-
-class Bomba(Sprite): #herança da classe Sprite
-    def __init__(self, posicaobomba, tempo, raiodeexplosao, tamanho, mapa, dono = None, configuracoes = None):
+class Bomba(Sprite):  # Herança da classe Sprite
+    def __init__(self, posicaobomba, tempo, raiodeexplosao, tamanho, mapa, dono=None, configuracoes=None):
         pygame.sprite.Sprite.__init__(self)
 
         self.__posicaobomba = posicaobomba
@@ -26,9 +25,13 @@ class Bomba(Sprite): #herança da classe Sprite
         ]
 
         self.image = self.images[self.image_index]
-        self.rect = self.image.get_rect(topleft = posicaobomba)
+        self.rect = self.image.get_rect(topleft=posicaobomba)
         self.tempo_animacao = 0.05
         self.contador_tempo = 0
+    
+    @property
+    def explodindo(self):
+        return self.tempo_decorrido >= self.__tempo
     
     def criar_explosao(self): 
         centro_explosao = self.rect.center
@@ -51,7 +54,7 @@ class Bomba(Sprite): #herança da classe Sprite
 
         centro_explosao = raio_explosao.center
 
-        #Identificando o bloco mais proximo do centro da explosão:
+        # Identificando o bloco mais próximo do centro da explosão:
         bloco_mais_proximo = None
         menor_distancia = float('inf')
 
@@ -65,14 +68,14 @@ class Bomba(Sprite): #herança da classe Sprite
                         if distancia < menor_distancia:
                             menor_distancia = distancia
                             bloco_mais_proximo = bloco
-                            
+
         if bloco_mais_proximo:
-            print(f"Colisão detectada com bloco destrutível: {bloco.rect}") #Testando a colisão
+            print(f"Colisão detectada com bloco destrutível: {bloco_mais_proximo.rect}")  # Testando a colisão
             bloco_mais_proximo.kill()
             self.mapa.blocos.remove(bloco_mais_proximo)
             bloco_destruido = True
 
-            #Gerar podedr com base na dificuldade do jogo
+            # Gerar poder com base na dificuldade do jogo
             poder = Poder.gerar_poder(bloco_mais_proximo.rect.topleft, bloco_mais_proximo.rect.size, self.mapa.dificuldade)
             if poder:
                 self.mapa.poderes.add(poder)
@@ -85,35 +88,32 @@ class Bomba(Sprite): #herança da classe Sprite
         for inimigo in self.mapa.inimigos:
             if raio_explosao.colliderect(inimigo.rect):
                 if inimigo != self.dono:
-                    print("Colisão com jogador detectada")
+                    print("Colisão com inimigo detectada")
                     inimigo.sofrer_dano(self)
-                
     
     def explodir(self):
-        explosao= self.criar_explosao()
+        explosao = self.criar_explosao()
         self.causar_dano(explosao)
         self.kill()
 
-
     def update(self, dt):
-        self.tempo_decorrido +=  dt
+        self.tempo_decorrido += dt
         self.contador_tempo += dt
         if self.contador_tempo >= self.tempo_animacao:
             self.contador_tempo = 0
             self.image_index = (self.image_index + 1) % len(self.images)
             self.image = self.images[self.image_index]
-        if self.tempo_decorrido >= self.__tempo:
+        if self.explodindo:  # Verifica se a bomba deve explodir
             self.explodir()
-
-   
+        
     @property
     def posicaoBomba(self):
         return self.__posicaobomba
+
     @property
     def tempo(self):
         return self.__tempo
+
     @property
     def raio(self):
         return self.__raiodeexplosao
-    
-

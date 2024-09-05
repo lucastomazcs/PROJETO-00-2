@@ -63,3 +63,4 @@ class Explosao(Sprite): #herança da classe Sprite
                 sprite.sofrer_dano(self)
 
 
+

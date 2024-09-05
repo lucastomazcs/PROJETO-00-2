@@ -28,3 +28,7 @@ class Bloco(Sprite):
     def redimensionar_imagem(self, novo_tamanho):
         self._image = pygame.transform.scale(self._image, (novo_tamanho, novo_tamanho))
         self.rect = self._image.get_rect(topleft=self.rect.topleft)
+    
+    def destruir(self):
+        # Lógica para destruir o bloco, como removê-lo do grupo de sprites
+        self.kill()  # Remove o bloco do grupo de sprites

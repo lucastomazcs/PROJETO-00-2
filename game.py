@@ -69,7 +69,9 @@ class Jogo:
         # Criação do inimigo
         self.inimigo = Inimigo((self.tamanho_bloco * 14, self.tamanho_bloco * 14), self.vida_inimigo, self.velocidade_inimigo, 'direcao', self.mapa, tamanho=tamanho_imagem_inimigo)
         
-        self.inimigo_explosivo = InimigoExplosivo((60, 800), (120, 120), 10, self.mapa, raio_explosao=50)
+        # Criação do inimigo explosivo
+        self.inimigo_explosivo = InimigoExplosivo((self.tamanho_bloco * 5, self.tamanho_bloco * 5), (self.tamanho_bloco - 9, self.tamanho_bloco - 9), self.velocidade_inimigo, self.mapa, raio_explosao=50)
+
 
 
         # Chama o método de ajustar dificuldade após criar os objetos

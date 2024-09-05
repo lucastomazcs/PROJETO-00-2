@@ -1,6 +1,7 @@
 import pygame
 from pygame.sprite import Sprite, Group
 from config import Configurações
+from inimigoexplosivo import InimigoExplosivo
 
 class Explosao(Sprite): #herança da classe Sprite
     def __init__(self, posicao, tamanho, tempo_animacao, mapa, dono = None, configuracoes = None):
@@ -46,9 +47,19 @@ class Explosao(Sprite): #herança da classe Sprite
         
             
     def causar_dano(self):
+        from player import Player
+        # Verifica se o dano é causado por uma bomba de jogador
+        is_bomba_jogador = isinstance(self.dono, Player)
+
         for sprite in pygame.sprite.spritecollide(self, self.mapa.jogadores, False):
             sprite.sofrer_dano(self)
+
         for sprite in pygame.sprite.spritecollide(self, self.mapa.inimigos, False):
-            if sprite != self.dono:
+            if is_bomba_jogador and isinstance(sprite, InimigoExplosivo):
+                # Se a explosão for de um jogador e atingir um InimigoExplosivo, matá-lo instantaneamente
+                sprite.explodir(None)  # Detona o inimigo imediatamente
+            elif sprite != self.dono:
+                # Caso contrário, aplica dano normal
                 sprite.sofrer_dano(self)
+
 

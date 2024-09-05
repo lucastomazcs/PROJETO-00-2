@@ -36,11 +36,16 @@ class Jogo:
         self.tela = pygame.display.set_mode((self.largura, self.altura), pygame.RESIZABLE)
         pygame.display.set_caption("Bomberman")
 
+        # Carregar a sprite de sobreposição
+        self.sprite_sobreposicao = pygame.image.load("Botões/tela_menu.png")
+        self.sprite_sobreposicao = pygame.transform.scale(self.sprite_sobreposicao, (self.largura, self.altura))
+
         self.cor_preta = (0, 0, 0)
         self.clock = pygame.time.Clock()
         self.game_over = False
         self.vitoria = False
         self.rodando = True
+        self.paused = False
 
         # Valores padrão antes da configuração
         self.velocidade_jogador = 3  # Valor padrão
@@ -64,8 +69,8 @@ class Jogo:
         # Criação do inimigo
         self.inimigo = Inimigo((self.tamanho_bloco * 14, self.tamanho_bloco * 14), self.vida_inimigo, self.velocidade_inimigo, 'direcao', self.mapa, tamanho=tamanho_imagem_inimigo)
         
-        # Exemplo: adicionar um inimigo explosivo ao mapa
-        self.inimigo_explosivo = InimigoExplosivo(posicao=(60, 800), tamanho=(120, 120), velocidade=10, mapa=self.mapa,raio_explosao= 50)
+        self.inimigo_explosivo = InimigoExplosivo((60, 800), (120, 120), 10, self.mapa, raio_explosao=50)
+
 
         # Chama o método de ajustar dificuldade após criar os objetos
         self.ajustar_dificuldade(self.dificuldade)
@@ -113,9 +118,15 @@ class Jogo:
         self.botao_medio = Botao.criar_botao_medio(self.largura, self.altura)
         self.botao_dificil = Botao.criar_botao_dificil(self.largura, self.altura)
         self.botao_som = Botao.criar_botao_som(self.largura, self.altura, self.configuracoes)
+        self.botao_novo_jogo = Botao.criar_botao_novo_jogo(self.largura, self.altura)
+        self.botao_continuar = Botao.criar_botao_continuar(self.largura, self.altura)
+        self.botao_salvar = Botao.criar_botao_salvar(self.largura, self.altura, self.salvar_jogo)
+        self.botao_sair = Botao.criar_botao_sair(self.largura, self.altura, self.sair_jogo)
+
 
         self.botoes_jogadores = [self.botao_1player, self.botao_2player]
         self.botoes_dificuldade = [self.botao_facil, self.botao_medio, self.botao_dificil]
+        self.botoes_menu = [self.botao_novo_jogo, self.botao_continuar]
 
         self.selecao_dificuldade = None
         self.selecao_jogadores = None
@@ -164,7 +175,40 @@ class Jogo:
         self.tela.blit(imagem_inicio, (0, 0))
 
         pygame.display.flip()
+    
+    def tela_pausa(self):
+        
+        # Redimensionar a sprite de sobreposição
+        largura_sobreposicao = self.largura // 2
+        altura_sobreposicao = self.altura // 2
+        sprite_sobreposicao_menor = pygame.transform.scale(self.sprite_sobreposicao, (largura_sobreposicao, altura_sobreposicao))
+        
+        # Adicionar transparência à sprite de sobreposição (0 a 255; 0 é totalmente transparente e 255 é totalmente opaco)
+        sprite_sobreposicao_menor.set_alpha(60)  # Ajuste o valor para definir o nível de transparência desejado
 
+        # Desenhar a sprite de sobreposição na tela
+        pos_x = (self.largura - largura_sobreposicao) // 2
+        pos_y = (self.altura - altura_sobreposicao) // 2
+        self.tela.blit(sprite_sobreposicao_menor, (pos_x, pos_y))
+        
+        # Desenhar os botões de salvar e sair
+        self.botao_salvar.desenhar(self.tela)
+        self.botao_sair.desenhar(self.tela)
+        pygame.display.flip()
+
+
+    def tela_menu(self):
+        imagem_inicio = pygame.image.load("telas/tela_inicial.png")
+        imagem_inicio = pygame.transform.scale(imagem_inicio, (self.largura, self.altura))
+        self.tela.blit(imagem_inicio, (0, 0))
+
+        # Desenhar a sprite de sobreposição
+        self.tela.blit(self.sprite_sobreposicao, (0, 0))
+
+        for botao in self.botoes_menu:
+            botao.desenhar(self.tela)
+
+        pygame.display.flip()
     def tela_game_over(self):
         imagem_game_over = pygame.image.load("telas/Tela_Game_Overr.png")
         imagem_game_over = pygame.transform.scale(imagem_game_over, (self.largura, self.altura))
@@ -177,13 +221,21 @@ class Jogo:
         self.tela.blit(imagem_vitoria, (0, 0))
         pygame.display.flip()
 
+    def salvar_jogo(self):
+        self.salvar.salvar_jogo(self.jogador, self.inimigo, self.inimigo_explosivo, self.mapa)
+
+    def sair_jogo(self):
+        self.rodando = False
+
     def tratar_eventos(self):
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 self.rodando = False
             elif evento.type == pygame.KEYDOWN:
-                if self.estado == "Inicial" and evento.key == pygame.K_SPACE:  # Pressione espaço para iniciar
-                    self.estado = "Jogando"
+                if evento.key == pygame.K_ESCAPE:
+                    self.paused = not self.paused  # Alterna entre pausado e não pausado
+                elif self.estado == "Inicial" and evento.key == pygame.K_SPACE:
+                    self.estado = "Menu"
                 elif self.game_over and evento.key == pygame.K_r:
                     self.reiniciar_jogo()
                 elif self.game_over and evento.key == pygame.K_q:
@@ -193,46 +245,44 @@ class Jogo:
                 elif self.vitoria and evento.key == pygame.K_q:
                     self.rodando = False
                 elif evento.key == pygame.K_t:
-                    self.salvar.salvar_jogo(self.jogador, self.inimigo, self.mapa)
+                    self.salvar.salvar_jogo(self.jogador, self.inimigo, self.inimigo_explosivo, self.mapa)
                 elif evento.key == pygame.K_l:
-                    self.salvar.carregar_jogo(self.jogador, self.inimigo, self.mapa)
+                    self.salvar.carregar_jogo(self.jogador, self.inimigo, self.inimigo_explosivo, self.mapa)
                     self.estado = "Jogando"
-            elif evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:  # Clique com o botão esquerdo do mouse
+            elif evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
                 if self.estado == "Inicial":
-                    if self.botao_start.collidepoint(evento.pos):  # Se clicar no botão Start invisível
-                        self.estado = "Escolha"
-                    elif self.botao_sair.collidepoint(evento.pos):  # Se clicar no botão Sair invisível
+                    if self.botao_start.collidepoint(evento.pos):
+                        self.estado = "Menu"
+                    elif self.botao_sair.collidepoint(evento.pos):
                         self.rodando = False
+                elif self.estado == "Menu":
+                    if self.botao_novo_jogo.rect.collidepoint(evento.pos):
+                        self.estado = "Escolha"
+                    elif self.botao_continuar.rect.collidepoint(evento.pos):
+                        self.salvar.carregar_jogo(self.jogador, self.inimigo, self.inimigo_explosivo, self.mapa)
+                        self.estado = "Jogando"
                 elif self.estado == "Escolha":
                     if self.botao_facil.rect.collidepoint(evento.pos):
                         self.selecao_dificuldade = 'Fácil'
-                        print('Dificuldade escolhida: Fácil')  # Debug
                     elif self.botao_medio.rect.collidepoint(evento.pos):
                         self.selecao_dificuldade = 'Médio'
-                        print('Dificuldade escolhida: Médio')
                     elif self.botao_dificil.rect.collidepoint(evento.pos):
                         self.selecao_dificuldade = 'Difícil'
-                        print('Dificuldade escolhida: Difícil')
-
-                    # Verifica seleção de jogadores:
                     if self.botao_1player.rect.collidepoint(evento.pos):
                         self.selecao_jogadores = 1
-                        print('Número de jogadores escolhidos: 1')
                     elif self.botao_2player.rect.collidepoint(evento.pos):
                         self.selecao_jogadores = 2
-                        print('Número de jogadores escolhidos: 2')
-
-                    # Se ambas as seleções forem feitas iniciar jogo:
                     if self.selecao_dificuldade and self.selecao_jogadores:
                         self.ajustar_dificuldade(self.selecao_dificuldade)
                         self.numero_jogadores = self.selecao_jogadores
-
-                        # Reinicializa o jogo com os parâmetros definidos
                         self.reiniciar_jogo()
                         self.estado = 'Jogando'
-
+                elif self.paused:
+                    if self.botao_salvar.rect.collidepoint(evento.pos):
+                        self.salvar_jogo()
+                    elif self.botao_sair.rect.collidepoint(evento.pos):
+                        self.sair_jogo()
                 else:
-                    # Checar clique no botão de som:
                     self.botao_som.checar_clique(evento.pos)
 
     def reiniciar_jogo(self):
@@ -246,10 +296,19 @@ class Jogo:
             self.tempo_decorrido = tempo_atual - self.tempo_inicio
 
     def update(self, dt):
+        if self.paused:
+            self.tela_pausa()
+            self.clock.tick(60)
+            return  # Não atualiza o jogo se estiver pausado
+
+
         self.atualizar_tempo()
         if self.estado == "Inicial":
             self.tela_inicial()
             pygame.display.flip()
+
+        elif self.estado == "Menu":
+            self.tela_menu()
 
         elif self.estado == "Escolha":
             self.tela_escolha()
@@ -291,10 +350,7 @@ class Jogo:
                 self.mapa.explosoes.update(dt)
                 self.mapa.explosoes.draw(self.tela)
                 self.mapa.update(dt)
-
-                # Desenha o botão de som
-                # self.botao_som.desenhar(self.tela)
-
+                
                 pygame.display.flip()
 
                 # Verifica se algum jogador perdeu todas as vidas

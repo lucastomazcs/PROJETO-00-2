@@ -25,7 +25,7 @@ class Botao:
             # Caso não haja imagens, use o fundo e texto padrão
             self.imagem_atual = None
             self.imagem_mutada = None
-
+        
     def desenhar(self, tela):
         if self.imagens:
             if self.configuracoes and self.configuracoes.som_mutado:
@@ -123,3 +123,58 @@ class Botao:
             cor_texto= (255,255,255),
             imagens= ['Botões/botao_player_2.png']
         )
+    
+    @staticmethod
+    def criar_botao_novo_jogo(largura_tela, altura_tela):
+        return Botao(
+            x = (largura_tela // 2) - 150,
+            y = (altura_tela // 2) - 60,
+            largura = 400,
+            altura = 200,
+            texto = 'Novo Jogo',
+            cor_fundo = (0, 0, 0),
+            cor_texto = (255, 255, 255),
+            imagens = ['Botões/botão_novoJogo.png']
+        )
+
+    @staticmethod
+    def criar_botao_continuar(largura_tela, altura_tela):
+        return Botao(
+            x = (largura_tela // 2) - 150,
+            y = (altura_tela // 2) + 120,
+            largura = 400,
+            altura = 200,
+            texto = 'Continuar',
+            cor_fundo = (0, 0, 0),
+            cor_texto = (255, 255, 255),
+            imagens = ['Botões/botão_continuar.png']
+        )
+    
+    @staticmethod
+    def criar_botao_salvar(largura_tela, altura_tela, acao_salvar):
+        return Botao(
+            x = (largura_tela // 2) - 200,  # Ajustado para centralizar
+            y = (altura_tela // 2) - 60,  # Ajustado para centralizar
+            largura = 400,  
+            altura = 200,   
+            texto = 'Salvar',
+            cor_fundo = (0, 0, 0),
+            cor_texto = (255, 255, 255),
+            acao = acao_salvar,
+            imagens = ['Botões/botão_salvar.png']
+        )
+
+    @staticmethod
+    def criar_botao_sair(largura_tela, altura_tela, acao_sair):
+        return Botao(
+            x = (largura_tela // 2) - 200,  # Ajustado para centralizar
+            y = (altura_tela // 2) + 120,    # Ajustado para centralizar
+            largura = 400,  
+            altura = 200,   
+            texto = 'Sair',
+            cor_fundo = (0, 0, 0),
+            cor_texto = (255, 255, 255),
+            acao = acao_sair,
+            imagens = ['Botões/botão_sair.png']
+        )
+    

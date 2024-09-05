@@ -91,6 +91,9 @@ class Inimigo(Personagem, Sprite):  # Inimigo herda de Personagem e Sprite
         return False
 
     def plantar_bomba(self):
+        if not self.alive(): # Verifica se o inimigo está vivo
+            return
+
         current_time = pygame.time.get_ticks() / 1000
         if current_time - self.tempo_ultimo_plante >= self.intervalo_bomba:
             bomba = Bomba(self.rect.topleft, self.range_bomba, 30, (40, 40), self.mapa, dono=self)
@@ -132,6 +135,9 @@ class Inimigo(Personagem, Sprite):  # Inimigo herda de Personagem e Sprite
             self.image = self.images[self.image_index]
 
     def update(self, jogadores, dt: float):
+        if not self.alive():
+            return
+        
         # Escolhe o jogador mais próximo:
         jogador_mais_proximo = self.encontrar_jogador_mais_proximo(jogadores)
 
@@ -172,3 +178,8 @@ class Inimigo(Personagem, Sprite):  # Inimigo herda de Personagem e Sprite
         delta_x = posicao_jogador[0] - self.rect.centerx
         delta_y = posicao_jogador[1] - self.rect.centery
         return math.hypot(delta_x, delta_y)
+    
+    def morrer(self):
+        if self.vida <= 0:
+            print("Inimigo morreu!")
+            self.kill()  # Remove o inimigo do grupo e para de atualizá-lo

@@ -105,3 +105,5 @@ class Personagem:
     
     def morte_instantanea(self):
         self.kill()
+    
+    
